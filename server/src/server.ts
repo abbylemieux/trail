@@ -2,7 +2,7 @@ import express, { Application } from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import sequelize from '';
-import thirdPartyRoutes from './routes/thirdPartyRoutes';
+import thirdPartyRoutes from './api/routes/thirdPartyRoutes';
 
 dotenv.config();
 
