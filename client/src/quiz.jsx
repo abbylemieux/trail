@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 const questions = [
   {
     question:
@@ -49,7 +48,6 @@ const questions = [
     ],
   },
 ];
-
 const calculateMedian = (values) => {
   const sorted = values.filter((v) => v !== null).sort((a, b) => a - b);
   const mid = Math.floor(sorted.length / 2);
@@ -58,7 +56,6 @@ const calculateMedian = (values) => {
     ? sorted[mid]
     : (sorted[mid - 1] + sorted[mid]) / 2;
 };
-
 const determineFitnessLevel = (median) => {
   if (median === null) return "Please answer all questions to get your result.";
   if (median < 1) return "Beginner";
@@ -66,18 +63,15 @@ const determineFitnessLevel = (median) => {
   if (median < 3) return "Advanced";
   return "Expert";
 };
-
 const Quiz = () => {
   const [answers, setAnswers] = useState(Array(questions.length).fill(null));
   const [submitted, setSubmitted] = useState(false);
   const [fitnessLevel, setFitnessLevel] = useState("");
-
   const handleChange = (index, optionIndex) => {
     const newAnswers = [...answers];
     newAnswers[index] = optionIndex; // Store the selected option index for the current question
     setAnswers(newAnswers);
   };
-
   const handleSubmit = (event) => {
     event.preventDefault(); // Prevent default form submission
     if (answers.includes(null)) {
@@ -89,7 +83,7 @@ const Quiz = () => {
     setFitnessLevel(level); // Update fitness level state
     setSubmitted(true); // Mark the quiz as submitted
   };
-
+  
   return (
     <div>
       <h1>Trail Experience Quiz</h1>
@@ -114,26 +108,15 @@ const Quiz = () => {
         ))}
         <button type="submit">Submit</button>
       </form>
-
+  
       {submitted && (
         <div>
           <h2>Your Fitness Level:</h2>
           <p>{fitnessLevel}</p>
-          <h2>Your Answers:</h2>
-          <ul>
-            {answers.map((answerIndex, index) => (
-              <li key={index}>
-                {questions[index].question} -{" "}
-                {answerIndex !== null
-                  ? questions[index].options[answerIndex]
-                  : "Not answered"}
-              </li>
-            ))}
-          </ul>
         </div>
       )}
     </div>
   );
-};
-
-export default Quiz;
+  };
+  
+  export default Quiz;
