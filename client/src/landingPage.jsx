@@ -1,17 +1,21 @@
 import React from 'react';
 import './LandingPage.css';
+import Demo from './navbar'
+
 const LandingPage = () => {
   return (
     <div className="landing-page">
       <header className="landing-header">
+        
         <h1>Welcome to Trail Trekker</h1>
         <p>Discover, explore, and enjoy the best trails around you!</p>
         <button className="explore-button">Explore Trails</button>
       </header>
       <section className="features">
-        <h2>Features</h2>
+        
         <div className="feature-list">
           <div className="feature">
+            <a><img src="./src/assets/Lincoln.jpg" width="450px"></img></a>
             <h3>Find Trails</h3>
             <p>Search for trails based on location, difficulty, and length.</p>
           </div>
