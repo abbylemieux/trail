@@ -1,4 +1,5 @@
 import { AppShell } from '@mantine/core';
+import React from 'react';
 
 function Footer() {
   return (
