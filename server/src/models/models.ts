@@ -1,11 +1,11 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/database';
 
-const  = sequelize.define('', {
+const Trail = sequelize.define('Trail', {
     name: {
         type: DataTypes.STRING,
         allowNull: false,
     },
 });
 
-export default ;
+export default Trail;
