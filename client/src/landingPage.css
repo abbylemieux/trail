@@ -1,21 +1,133 @@
+/* Reset some default margin and padding */
 * {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-}
-
-.main-section h1 {
-   font-size: 55px;
-   color: white;
-
-
-}
-.main-section {
-    background-color: rgb(72, 143, 72);
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Navigation Styles */
+  .landing-page-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+  }
+  
+  .logo {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  nav a {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .join-btn {
+    background-color: #2F3E46;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .join-btn:hover {
+    background-color: #84A98C;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    background-image: url('your-image-url.jpg'); /* Add your hero image URL here */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    position: relative;
     display: flex;
     justify-content: center;
-
-}
-.main-section p {
-    font-size: 25px;
-    color: burlywood;
-}
+    align-items: center;
+    text-align: center;
+    color: white;
+  }
+  
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#52796F, #CAD2C5);
+    z-index: 1;
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .hero-content h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    color: #ecf0f1;
+  }
+  
+  /* Call to Action Buttons */
+  .cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .primary-btn, .secondary-btn {
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .primary-btn {
+    background-color: white;
+    color: #2F3E46;
+    border: none;
+  }
+  
+  .primary-btn:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .secondary-btn {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+  }
+  
+  .secondary-btn:hover {
+    background-color: white;
+    color: #2F3E46;
+  }
+  
