@@ -1,14 +1,13 @@
-import { Tabs } from '@mantine/core';
-
-function Demo() {
+export default function Nav({ links }) {
   return (
-    <Tabs defaultValue="first">
-      <Tabs.List justify="space-between">
-        <Tabs.Tab value="first">Login Info</Tabs.Tab>
-        <Tabs.Tab value="second">Trails Visited</Tabs.Tab>
-      </Tabs.List>
-    </Tabs>
-  );
+    <nav className="/">
+      <div className="/">
+        <div className="/">
+          <ul className="/">
+            {links.map((link) => link)}
+          </ul>
+        </div>
+      </div>
+    </nav>
+  )
 }
-
-export default Demo;

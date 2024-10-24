@@ -1,4 +1,5 @@
-import { AppShell, Burger } from '@mantine/core';
+import React from 'react';
+import { AppShell, Burger, TextInput} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
 function Header() {
