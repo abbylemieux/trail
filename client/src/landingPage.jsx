@@ -1,13 +1,21 @@
 import React from 'react';
 import './LandingPage.css';
+import { Link } from "react-router-dom"
+
+
+
+
 
 const LandingPage = () => {
+
+  
   return (
+
     <section className="main-section">
     <div className="main-content">
     <h1>TrailTrekker.io</h1>
     <p>Trail tips from those who trek</p>
-    <button className="cta-btn">Sign-Up</button>
+    <button>Sign-Up</button>
     <button className="cta-btn">Login</button>
   </div>
 </section>
