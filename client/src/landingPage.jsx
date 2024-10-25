@@ -1,6 +1,7 @@
 import React from 'react';
 import './LandingPage.css';
 import { Link } from "react-router-dom"
+import nav from './Nav.jsx';
 
 
 const LandingPage = () => {
@@ -25,7 +26,7 @@ const LandingPage = () => {
           <p>Discover the best trails and connect with hikers around the world.</p>
           <div className="cta-buttons">
             <Link key={2} className="primary-btn" to="/sign-up">Sign Up</Link>
-            <button className="secondary-btn">Browse Trails</button>
+            <Link key={3} className="secondary-btn" to="/browse">Browse Trails</Link>
           </div>
         </div>
       </section>

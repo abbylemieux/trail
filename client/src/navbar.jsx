@@ -1,13 +1,13 @@
-export default function Nav({ links }) {
+import React from 'react';
+
+export default function Navbar({ links }) {
   return (
-    <nav className="/">
-      <div className="/">
-        <div className="/">
-          <ul className="/">
-            {links.map((link) => link)}
-          </ul>
-        </div>
-      </div>
+    <nav>
+      <ul>
+        {links.map(link => (
+          <li key={link.key}>{link}</li>
+        ))}
+      </ul>
     </nav>
-  )
+  );
 }
