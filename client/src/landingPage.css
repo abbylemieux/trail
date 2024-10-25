@@ -58,7 +58,6 @@
   
   /* Hero Section */
   .hero-section {
-    background-image: url('your-image-url.jpg'); 
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -117,6 +116,7 @@
     background-color: white;
     color: #2F3E46;
     border: none;
+    /* sign-up buttons */
   }
   
   .primary-btn:hover {
@@ -127,6 +127,7 @@
     background-color: transparent;
     border: 2px solid white;
     color: white;
+    /* browse trails buttons */
   }
   
   .secondary-btn:hover {

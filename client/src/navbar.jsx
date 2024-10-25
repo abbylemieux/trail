@@ -1,13 +1,13 @@
-export default function Nav({ links }) {
+const Navbar = ({ links }) => {
   return (
-    <nav className="/">
-      <div className="/">
-        <div className="/">
-          <ul className="/">
-            {links.map((link) => link)}
-          </ul>
-        </div>
-      </div>
+    <nav>
+      <ul>
+        {links.map(link => (
+          <li key={link.key}>{link}</li> // Render each link as a list item
+        ))}
+      </ul>
     </nav>
-  )
-}
+  );
+};
+
+export default Navbar;
