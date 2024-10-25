@@ -7,7 +7,6 @@ import Register from './Register.jsx'
 import SignIn from './signIn.jsx'
 
 
-
 const router = createBrowserRouter([
   {
     path: '/',
