@@ -6,10 +6,10 @@ export default function Nav() {
         <Navbar
             links={[
                 <Link key={1} className="nav" to="/">
-                    Home
+                    
                 </Link>,
                 <Link key={2} className="reg" to="/register">
-                    Register
+                   
                 </Link>
             ]}
             />

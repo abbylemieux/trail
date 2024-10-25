@@ -25,7 +25,10 @@
   .logo {
     font-size: 2rem;
     font-weight: bold;
+    text-decoration: none;
+    color: black;
   }
+
   
   nav {
     display: flex;
@@ -55,7 +58,7 @@
   
   /* Hero Section */
   .hero-section {
-    background-image: url('your-image-url.jpg'); /* Add your hero image URL here */
+    background-image: url('your-image-url.jpg'); 
     background-size: cover;
     background-position: center;
     height: 100vh;

@@ -12,7 +12,7 @@ const LandingPage = () => {
     <div className="landing-page">
       {/* Navigation */}
       <header className="landing-page-nav">
-        <div className="logo">TrailTrekker.io</div>
+        <Link key={1} className="logo" to="/">TrailTrekker.io</Link>
         <nav>
           <a href="#">For You</a>
           <a href="#">Near You</a>
