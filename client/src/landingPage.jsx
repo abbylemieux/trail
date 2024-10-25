@@ -28,7 +28,7 @@ const LandingPage = () => {
           <h1>Unlock Your Adventure Potential</h1>
           <p>Discover the best trails and connect with hikers around the world.</p>
           <div className="cta-buttons">
-            <button className="primary-btn">Sign Up</button>
+            <Link key={2} className="primary-btn" to="/sign-up">Sign Up</Link>
             <button className="secondary-btn">Browse Trails</button>
           </div>
         </div>
