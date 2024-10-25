@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import axios from 'axios';
 
-export const fetchFromApi1 = async (req: Request, res: Response) => {
+export const trailApi = async (req: Request, res: Response) => {
     try {
         const response = await axios.get('https://');
         res.json(response.data);
@@ -10,7 +10,7 @@ export const fetchFromApi1 = async (req: Request, res: Response) => {
     }
 };
 
-export const fetchFromApi2 = async (req: Request, res: Response) => {
+export const weatherApi = async (req: Request, res: Response) => {
     try {
         const response = await axios.get('https://');
         res.json(response.data);

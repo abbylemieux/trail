@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import { fetchFromApi1, fetchFromApi2 } from '../controllers/thirdPartyController';
+import { trailApi, weatherApi } from '../controllers/thirdPartyController';
 
 const router = Router();
 
-router.get('/api1', fetchFromApi1);
-router.get('/api2', fetchFromApi2);
+router.get('/api1', trailApi);
+router.get('/api2', weatherApi);
 
 export default router;

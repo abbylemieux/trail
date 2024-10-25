@@ -4,7 +4,7 @@ import axios from 'axios';
  * Fetch data from the first third-party API.
  * @returns {Promise<any>} - The data retrieved from the API.
  */
-export const fetchFromApi1 = async (): Promise<any> => {
+export const trailApi = async (): Promise<any> => {
     try {
         const response = await axios.get('https://api1.example.com/data', {
             headers: {
@@ -23,7 +23,7 @@ export const fetchFromApi1 = async (): Promise<any> => {
  * Fetch data from the second third-party API.
  * @returns {Promise<any>} - The data retrieved from the API.
  */
-export const fetchFromApi2 = async (): Promise<any> => {
+export const weatherApi = async (): Promise<any> => {
     try {
         const response = await axios.get('https://api2.example.com/data', {
             headers: {
