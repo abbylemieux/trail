@@ -20,7 +20,7 @@ const Register = () => {
 
         const newUser = { username, email, password };
 
-        axios.post('http://localhost:5000/register', newUser)
+        axios.post('http://localhost:3001/register', newUser)
         .then(response => {
             setMessage(response.data.message);
         })
