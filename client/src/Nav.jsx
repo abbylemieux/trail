@@ -10,8 +10,11 @@ export default function Nav() {
                 </Link>,
                 <Link key={2} className="reg" to="/register">
                    
-                </Link>
+                </Link>,
+                <Link key={3} className="log" to="/login">
+                    
+                </Link> 
             ]}
-            />
+        />
     );
 }
