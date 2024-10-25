@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {texrInput, Button, Constainer, Title, Container} from "@mantine/core";
+import {TextInput, Button, Title, Container} from "@mantine/core";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import './signIn.css';
