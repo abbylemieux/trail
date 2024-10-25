@@ -3,10 +3,6 @@ import './LandingPage.css';
 import { Link } from "react-router-dom"
 
 
-
-
-
-
 const LandingPage = () => {
   return (
     <div className="landing-page">
@@ -18,7 +14,7 @@ const LandingPage = () => {
           <a href="#">Near You</a>
           <a href="#">Your Trails</a>
           <a href="#">Log In</a>
-          <button className="join-btn">Join Now</button>
+          <Link key={2} className="primary-btn" to="/sign-up">Sign Up</Link>
         </nav>
       </header>
 
