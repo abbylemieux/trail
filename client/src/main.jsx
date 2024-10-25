@@ -6,6 +6,7 @@ import LandingPage from './landingPage.jsx';
 import Register from './Register.jsx'
 
 
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
         path: 'sign-up',
         element: <Register />,
       },
+
     ],
   },
 ]);
