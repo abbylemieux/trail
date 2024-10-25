@@ -7,7 +7,13 @@ const hikeApi = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get('https://api.example.com/data')
+
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer your-token-here',
+    };
+
+    axios.get('https://api.example.com/data', { headers: headers })
       .then(response => {
         setData(response.data);
         setLoading(false);
