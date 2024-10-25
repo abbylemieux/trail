@@ -4,6 +4,7 @@ import './index.css'
 import App from './App.jsx'
 import LandingPage from './landingPage.jsx';
 import Register from './Register.jsx'
+import SignIn from './signIn.jsx'
 
 
 
@@ -20,7 +21,10 @@ const router = createBrowserRouter([
         path: 'sign-up',
         element: <Register />,
       },
-
+      {
+        path: 'log-in',
+        element: <SignIn />,
+      }
     ],
   },
 ]);

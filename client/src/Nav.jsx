@@ -5,21 +5,16 @@ export default function Nav() {
     return(
         <Navbar
             links={[
-                <Link
-                key={1}  
-                to="/">
+                <Link key={1} className="nav" to="/">
                     
                 </Link>,
-                <><Link
-                    key={2}
-                    to="/register">
-
-                </Link><Link key={3}
-                    to="sign-in">
-
-                    </Link></>
-               
+                <Link key={2} className="reg" to="/register">
+                   
+                </Link>,
+                <Link key={3} className="log" to="/login">
+                    
+                </Link> 
             ]}
-            />
+        />
     );
 }
