@@ -8,20 +8,24 @@ const hikeApi = () => {
 
   useEffect(() => {
 
+    const TRAIL_API_BASE_URL = 'https://9ioacg5nhe-dsn.algolia.net/1/indexes/alltrails_primary_en-US/query'
     const headers = {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer your-token-here',
     };
 
-    axios.get('https://api.example.com/data', { headers: headers })
+    axios.get(TRAIL_API_BASE_URL, { headers })
       .then(response => {
         setData(response.data);
-        setLoading(false);
       })
       .catch(error => {
         setError(error);
         setLoading(false);
+      })
+      .finally(() => {
+        setLoading(false);
       });
+      
   }, []);
 
   if (loading) return <div>Loading...</div>;
