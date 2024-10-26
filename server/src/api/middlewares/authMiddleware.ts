@@ -1,10 +1,4 @@
 import { Request, Response, NextFunction } from 'express';
-
-declare module 'express-serve-static-core' {
-    interface Request {
-        user?: { id: string };
-    }
-}
 import jwt from 'jsonwebtoken';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'secret';
