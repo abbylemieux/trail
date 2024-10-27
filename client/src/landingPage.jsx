@@ -1,6 +1,8 @@
-import React from "react";
-import "./LandingPage.css";
-import { Link } from "react-router-dom";
+import React from 'react';
+import './LandingPage.css';
+import { Link } from "react-router-dom"
+import nav from './Nav.jsx';
+
 
 const LandingPage = () => {
   return (
@@ -31,12 +33,8 @@ const LandingPage = () => {
             Discover the best trails and connect with hikers around the world.
           </p>
           <div className="cta-buttons">
-            <Link className="primary-btn" to="/sign-up">
-              Sign Up
-            </Link>
-            <Link className="secondary-btn" to="/trails">
-              Browse Trails
-            </Link>
+            <Link key={2} className="primary-btn" to="/sign-up">Sign Up</Link>
+            <button className="secondary-btn">Browse Trails</button>
           </div>
         </div>
       </section>

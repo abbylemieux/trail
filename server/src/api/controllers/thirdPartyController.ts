@@ -1,20 +1,27 @@
 import { Request, Response } from 'express';
+import { fetchTrailData, fetchWeatherData } from '../services/thirdPartyService';
 import axios from 'axios';
 
-export const trailApi = async (req: Request, res: Response) => {
+export const getTrails = async (req: Request, res: Response) => {
     try {
-        const response = await axios.get('https://');
-        res.json(response.data);
+        const { query } = req.body;
+        const trailData = await fetchTrailData(query);
+        res.status(200).json(trailData);
     } catch (error) {
         res.status(500).json({ message: 'Error fetching data from API 1' });
     }
 };
 
-export const weatherApi = async (req: Request, res: Response) => {
+export const getWeather = async (req: Request, res: Response) => {
     try {
-        const response = await axios.get('https://');
-        res.json(response.data);
+        const { latitude, longitutde } = req.query;
+        const weatherData = await fetchWeatherData({
+            latitude: Number(latitude),
+            longitude: Number(longitutde),
+            hourly: 'temperature_2m',
+        }); 
+        res.status(200).json(weatherData);
     } catch (error) {
-        res.status(500).json({ message: 'Error fetching data from API 2' });
+        res.status(500).json({ message: 'Error fetching weather data' });
     }
 };

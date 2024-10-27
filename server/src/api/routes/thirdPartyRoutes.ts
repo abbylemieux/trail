@@ -1,9 +1,10 @@
 import { Router } from 'express';
-import { trailApi, weatherApi } from '../controllers/thirdPartyController';
+import { getTrails, getWeather } from '../controllers/thirdPartyController';
+import { authMiddleware } from '../middlewares/authMiddleware';
 
 const router = Router();
 
-router.get('/api1', trailApi);
-router.get('/api2', weatherApi);
+router.post('/trails', authMiddleware, getTrails);
+router.get('/weather', authMiddleware, getWeather);
 
 export default router;
