@@ -40,4 +40,7 @@ sequelize.sync()
         console.log('Database connected!');
         app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
     })
-    .catch((error) => console.log('Database connection error:', error));
+    .catch((error) => {
+        console.error('Database connection error:', error);
+        throw new Error('Unable to connect to the database');
+    });
