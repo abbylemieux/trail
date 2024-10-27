@@ -13,7 +13,7 @@ export default class DatabaseQueries {
             );
             return result.rows[0];
         } catch (error) {
-            throw new DatabaseError(`Error creating user: ${error.message}`);
+            throw new DatabaseError(`Error creating user: ${(error as Error).message}`);
         }
     }
 
@@ -25,7 +25,7 @@ export default class DatabaseQueries {
             );
             return result.rows[0] || null;
         } catch (error) {
-            throw new DatabaseError(`Error fetching user: ${error.message}`);
+            throw new DatabaseError(`Error fetching user: ${(error as Error).message}`);
         }
     }
 
@@ -37,7 +37,7 @@ export default class DatabaseQueries {
             );
             return result.rows[0] || null;
         } catch (error) {
-            throw new DatabaseError(`Error fetching user by email: ${error.message}`);
+            throw new DatabaseError(`Error fetching user by email: ${(error as Error).message}`);
         }
     }
 
@@ -56,7 +56,7 @@ export default class DatabaseQueries {
             );
             return result.rows[0];
         } catch (error) {
-            throw new DatabaseError(`Error adding trail interaction: ${error.message}`);
+            throw new DatabaseError(`Error adding trail interaction: ${(error as Error).message}`);
         }
     }
 
@@ -76,7 +76,7 @@ export default class DatabaseQueries {
             );
             return result.rows[0];
         } catch (error) {
-            throw new DatabaseError(`Error adding review: ${error.message}`);
+            throw new DatabaseError(`Error adding review: ${(error as Error).message}`);
         }
     }
 
@@ -97,7 +97,7 @@ export default class DatabaseQueries {
             );
             return result.rows[0];
         } catch (error) {
-            throw new DatabaseError(`Error adding hiking record: ${error.message}`);
+            throw new DatabaseError(`Error adding hiking record: ${(error as Error).message}`);
         }
     }
 
@@ -116,7 +116,7 @@ export default class DatabaseQueries {
             );
             return result.rows;
         } catch (error) {
-            throw new DatabaseError(`Error fetching popular trails: ${error.message}`);
+            throw new DatabaseError(`Error fetching popular trails: ${(error as Error).message}`);
         }
     }
 
@@ -136,7 +136,7 @@ export default class DatabaseQueries {
             );
             return result.rows[0];
         } catch (error) {
-            throw new DatabaseError(`Error fetching user stats: ${error.message}`);
+            throw new DatabaseError(`Error fetching user stats: ${(error as Error).message}`);
         }
     }
 }

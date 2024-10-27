@@ -18,8 +18,12 @@ export const fetchTrailData = async (query: string): Promise<any> => {
                 },
             }
         );
-        
-        return response.data;
+        if (response.status === 200) {
+            console.log('Trail data fetched successfully');
+            return response.data;
+        } else {
+            throw new Error(`Trail API returned status code ${response.status}`);
+        }
     } catch (error) {
         console.error('Error fetching data:', error);
         throw new Error('Failed to fetch trail data');
@@ -44,7 +48,12 @@ export const fetchWeatherData = async (params: WeatherApiParams): Promise<any> =
                 hourly: params.hourly,
             },
         });
-        return response.data;
+        if (response.status === 200) {
+            console.log('Weather data fetched successfully');
+            return response.data;
+        } else {
+            throw new Error(`Weather API returned status code ${response.status}`);
+        }
     } catch (error) {
         console.error('Error fetching weather:', error);
         throw new Error('Failed to fetch weather data');

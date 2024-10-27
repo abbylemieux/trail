@@ -22,7 +22,12 @@ const generateToken = (userId: string) => {
 export const register = async ({email, password, name}: RegisterParams): Promise<string> => {
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await User.create({ email, password: hashedPassword, name });
-    return generateToken(user.id);
+    if (user) {
+        console.log('User registered successfully');
+        return generateToken(user.id);
+    } else {
+        throw new Error('Failed to register user');
+    }
 };
 
 export const login = async ({email, password}: LoginParams): Promise<string> => {
