@@ -1,11 +1,13 @@
 import { useState } from "react";
+import './styles/Quiz.css';  
+
 const questions = [
   {
     question:
       "How would you describe your current fitness level for outdoor activities such as hiking or trail running?",
     options: [
       "Beginner: I have little to no experience hiking or running on trails. I prefer flat, easy terrain and can manage walks or short hikes under 2 miles.",
-      "Moderate: I have some experience hiking or running on trails. I’m comfortable with moderate inclines and can manage hikes or runs between 2-5 miles.",
+      "Moderate: I have some experience hiking or running on trails. I'm comfortable with moderate inclines and can manage hikes or runs between 2-5 miles.",
       "Advanced: I hike or run regularly on trails, including steep inclines and rough terrain. I can handle longer hikes (5+ miles) and more challenging conditions.",
       "Expert: I am highly experienced with rigorous hikes or trail runs that include steep elevation changes, rocky or uneven terrain, and distances over 10 miles.",
     ],
@@ -43,11 +45,12 @@ const questions = [
     options: [
       "Yes, I prefer smooth, easy trails: I need or prefer trails without obstacles such as rocks, roots, or steep sections.",
       "Yes, but I can handle moderate terrain: I have some limitations, but I can manage trails with small obstacles or moderate inclines.",
-      "No, I’m ready for any challenge: I have no physical limitations and am ready for rough terrain, steep hills, and longer distances.",
-      "I’m not sure yet: I’d prefer to start with easier trails to assess my capabilities.",
+      "No, I'm ready for any challenge: I have no physical limitations and am ready for rough terrain, steep hills, and longer distances.",
+      "I'm not sure yet: I'd prefer to start with easier trails to assess my capabilities.",
     ],
   },
 ];
+
 const calculateMedian = (values) => {
   const sorted = values.filter((v) => v !== null).sort((a, b) => a - b);
   const mid = Math.floor(sorted.length / 2);
@@ -56,6 +59,7 @@ const calculateMedian = (values) => {
     ? sorted[mid]
     : (sorted[mid - 1] + sorted[mid]) / 2;
 };
+
 const determineFitnessLevel = (median) => {
   if (median === null) return "Please answer all questions to get your result.";
   if (median < 1) return "Beginner";
@@ -63,36 +67,39 @@ const determineFitnessLevel = (median) => {
   if (median < 3) return "Advanced";
   return "Expert";
 };
+
 const Quiz = () => {
   const [answers, setAnswers] = useState(Array(questions.length).fill(null));
   const [submitted, setSubmitted] = useState(false);
   const [fitnessLevel, setFitnessLevel] = useState("");
+
   const handleChange = (index, optionIndex) => {
     const newAnswers = [...answers];
-    newAnswers[index] = optionIndex; // Store the selected option index for the current question
+    newAnswers[index] = optionIndex;
     setAnswers(newAnswers);
   };
+
   const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault();
     if (answers.includes(null)) {
-      alert("Please answer all questions before submitting."); // Alert for unanswered questions
+      alert("Please answer all questions before submitting.");
       return;
     }
-    const median = calculateMedian(answers); // Calculate the median of the answers
-    const level = determineFitnessLevel(median); // Determine fitness level based on median
-    setFitnessLevel(level); // Update fitness level state
-    setSubmitted(true); // Mark the quiz as submitted
+    const median = calculateMedian(answers);
+    const level = determineFitnessLevel(median);
+    setFitnessLevel(level);
+    setSubmitted(true);
   };
-  
+
   return (
-    <div>
+    <div className="quiz-container">
       <h1>Trail Experience Quiz</h1>
       <form onSubmit={handleSubmit}>
         {questions.map((q, index) => (
-          <div key={index}>
+          <div key={index} className="question-section">
             <h3>{q.question}</h3>
             {q.options.map((option, optionIndex) => (
-              <div key={optionIndex}>
+              <div key={optionIndex} className="option-wrapper">
                 <input
                   type="radio"
                   id={`q${index}o${optionIndex}`}
@@ -106,17 +113,17 @@ const Quiz = () => {
             ))}
           </div>
         ))}
-        <button type="submit">Submit</button>
+        <button type="submit">Find Your Trail Level</button>
       </form>
-  
+
       {submitted && (
-        <div>
+        <div className="results-section">
           <h2>Your Fitness Level:</h2>
           <p>{fitnessLevel}</p>
         </div>
       )}
     </div>
   );
-  };
-  
-  export default Quiz;
+};
+
+export default Quiz;
