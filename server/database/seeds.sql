@@ -1,5 +1,5 @@
 -- seeds.sql
-\c trail_finder_db
+\c postgres
 
 -- Insert test users (passwords would be hashed in real application)
 INSERT INTO users (username, email, password) VALUES
