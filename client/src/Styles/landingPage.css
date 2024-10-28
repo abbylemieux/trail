@@ -116,17 +116,19 @@
     background-color: white;
     color: #2F3E46;
     border: none;
+    text-decoration: none;
     /* sign-up buttons */
   }
   
   .primary-btn:hover {
-    background-color: #f9f9f9;
+    background-color: #8e9192;
   }
   
   .secondary-btn {
     background-color: transparent;
     border: 2px solid white;
     color: white;
+    text-decoration: none;
     /* browse trails buttons */
   }
   

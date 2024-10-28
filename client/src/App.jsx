@@ -1,14 +1,15 @@
-// import Nav from "./Nav";
-import { Outlet } from "react-router-dom";
-import "./App.css";
-import "./landingPage.css";
+import Nav from "./Nav";
+
+
+// import React, { useState } from 'react';
+
 
 function App() {
   return (
     <>
       <div>
-        <Outlet />
-        {/* <Nav /> */}
+        <Nav />
+        
       </div>
     </>
     
