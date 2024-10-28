@@ -1,12 +1,12 @@
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { MantineProvider } from '@mantine/core'; // Import MantineProvider
 
-import App from './App.jsx'
+import App from './App.jsx';
 import LandingPage from './landingPage.jsx';
-import Register from './components/Register.jsx'
-import SignIn from './components/signIn.jsx'
+import Register from './components/Register.jsx';
+import SignIn from './components/signIn.jsx';
 import Quiz from './quiz.jsx';
-
 
 const router = createBrowserRouter([
   {
@@ -34,5 +34,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} />
+  <MantineProvider>
+    <RouterProvider router={router} />
+  </MantineProvider>
 );
