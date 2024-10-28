@@ -8,8 +8,8 @@ const BrowseTrails = () => {
   const [sortBy, setSortBy] = useState('distance');
   const [filterDifficulty, setFilterDifficulty] = useState('all');
 
-  const API_KEY = 'YOUR_API_KEY_HERE';
-  const API_URL = 'https://example.com/api/trails';
+  const API_KEY = 'your_actual_api_key';
+  const API_URL = 'https://your_actual_api_url';
 
   const getDifficultyColor = (difficulty) => {
     const colors = {
