@@ -1,7 +1,7 @@
 import React from 'react';
 import './LandingPage.css';
 import { Link } from "react-router-dom"
-import nav from './Nav.jsx';
+// import nav from './Nav.jsx';
 
 
 const LandingPage = () => {

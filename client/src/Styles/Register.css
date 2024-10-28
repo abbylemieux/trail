@@ -12,15 +12,7 @@
     text-decoration: none;
     color: rgb(0, 0, 0);
     
-        display: flex;
-        padding: 20px 50px 40px;
-        background-color: white;
-        position: fixed;
-        width: 100%;
-        top: 0;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        z-index: 10;
-      
+        
   }
 
 
