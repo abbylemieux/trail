@@ -1,43 +1,24 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import './Register.css';
-import { Link } from "react-router-dom"
 
-const Register = () => {
-    const [username, setUsername] = useState('');
+import '/src/Styles/Register.css'
+import { Link } from "react-router-dom";
+import { register } from '/src/services/authService.js'
+
+const RegisterForm = ({ onRegister }) => {
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [message, setMessage] = useState('');
-    const [messageType, setMessageType] = useState(''); // 'error' or 'success'
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        if (password !== confirmPassword) {
-            setMessage("Passwords do not match.");
-            setMessageType('error');
-            return;
-        }
-
-        const newUser = { username, email, password };
-
-        axios.post('http://localhost:3001/register', newUser)
-            .then(response => {
-                setMessage(response.data.message);
-                setMessageType('success');
-                // Clear form on success
-                setUsername('');
-                setEmail('');
-                setPassword('');
-                setConfirmPassword('');
-            })
-            .catch(error => {
-                console.error(error);
-                setMessage('Registration failed. Please try again.');
-                setMessageType('error');
-            });
+    const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+    await register(name, email, password);
+    onRegister();
+    } catch (error) {
+    alert('Registration failed');
+    }
     };
+
 
     return (
         <><header>
@@ -50,8 +31,8 @@ const Register = () => {
                     <input
                         type="text"
                         placeholder="Username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                         required />
                     <input
                         type="email"
@@ -73,13 +54,9 @@ const Register = () => {
                         required />
                     <button type="submit">Start Your Journey</button>
                 </form>
-                {message && (
-                    <p className={messageType === 'error' ? 'error-message' : 'success-message'}>
-                        {message}
-                    </p>
-                )}
+                
             </div></>
     );
 };
 
-export default Register;
+export default RegisterForm;

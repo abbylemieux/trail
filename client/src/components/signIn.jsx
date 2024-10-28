@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {TextInput, Button, Title, Container} from "@mantine/core";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
-import './signIn.css';
+
 
 
 const SignIn = () => {

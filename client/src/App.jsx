@@ -1,4 +1,4 @@
-import Nav from "./Nav";
+// import Nav from "./Nav";
 import { Outlet } from "react-router-dom";
 import "./App.css";
 import "./landingPage.css";
@@ -8,7 +8,7 @@ function App() {
     <>
       <div>
         <Outlet />
-        <Nav />
+        {/* <Nav /> */}
       </div>
     </>
     
