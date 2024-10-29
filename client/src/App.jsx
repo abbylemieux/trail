@@ -1,8 +1,4 @@
-
-
-
 import Nav from "./Nav";
-
 
 
 // import React, { useState } from 'react';
@@ -13,7 +9,6 @@ function App() {
     <>
       <div>
         <Nav />
-        
         
       </div>
     </>

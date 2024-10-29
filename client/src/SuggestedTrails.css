@@ -1,0 +1,41 @@
+.suggested-trails-container {
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+  
+  .trail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .trail-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .trail-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .trail-info {
+    padding: 1rem;
+  }
+  
+  .trail-name {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  
+  .trail-length,
+  .trail-rating,
+  .trail-difficulty {
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+  }
+  
