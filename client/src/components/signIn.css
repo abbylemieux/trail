@@ -2,7 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Full viewport height */
+  height: 100vh; 
+  background: linear-gradient(#52796F, #CAD2C5);
 }
 
 button:hover {
@@ -33,18 +34,24 @@ form {
   flex-direction: column;
 }
 
-input[type="text"],
-input[type="password"] {
+input[type="text"], input[type="password"] {
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  width: 100%; 
+  box-sizing: border-box;
 }
 
 button {
   padding: 10px;
-  background-color: #84A98C;
+  background-color: #81ad8c !important;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+button:hover {
+  background-color: #32553a !important;
+}
