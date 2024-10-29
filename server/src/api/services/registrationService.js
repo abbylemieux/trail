@@ -12,30 +12,25 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateUser = exports.getUserById = void 0;
-exports.saveUser = saveUser;
-const user_1 = __importDefault(require("../../models/user"));
-const getUserById = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    return yield user_1.default.findByPk(id);
-});
-exports.getUserById = getUserById;
-const updateUser = (id, updateData) => __awaiter(void 0, void 0, void 0, function* () {
-    return yield user_1.default.update(updateData, { where: { id } });
-});
-exports.updateUser = updateUser;
-function saveUser(userData) {
+exports.registrationService = registrationService;
+const axios_1 = __importDefault(require("axios"));
+const REGISTRATION_ENDPOINT = process.env.REGISTRATION_API_URL;
+function registrationService(data) {
     return __awaiter(this, void 0, void 0, function* () {
+        var _a, _b;
         try {
-            const user = yield user_1.default.create({
-                email: userData.email,
-                password: userData.password, // Ideally, hash the password before saving
-                externalId: userData.externalId,
+            const response = yield axios_1.default.post(REGISTRATION_ENDPOINT, data, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
             });
-            return user;
+            console.log('Registration successful:', response.data);
+            return response.data;
         }
         catch (error) {
-            throw new Error('Error saving user to database');
+            console.error('Error during registration:', error);
+            const err = error;
+            throw new Error(((_b = (_a = err.response) === null || _a === void 0 ? void 0 : _a.data) === null || _b === void 0 ? void 0 : _b.message) || 'Registration failed');
         }
     });
 }
-;
