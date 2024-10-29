@@ -7,7 +7,7 @@ TrailTrekker.io is a web application designed to help users find and explore hik
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [Screenshot] (#screenshot)
+- [Screenshot](#screenshot)
 - [License](#license)
 - [Links](#links)
 
