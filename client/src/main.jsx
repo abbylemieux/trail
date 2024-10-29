@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { MantineProvider } from '@mantine/core'; // Import MantineProvider
-
+import YourTrails from './components/YourTrails.jsx'
 import App from './App.jsx';
 import LandingPage from './landingPage.jsx';
 import Register from './components/Register.jsx';
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'your-trails',
-        element: ''
+        element: <YourTrails />
       }  
     ],
   },
