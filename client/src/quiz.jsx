@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
-import './styles/Quiz.css';
+import { useNavigate } from "react-router-dom";
+import "./styles/Quiz.css";
+
 
 const questions = [
   {
@@ -56,7 +57,9 @@ const calculateMedian = (values) => {
   const sorted = values.filter((v) => v !== null).sort((a, b) => a - b);
   const mid = Math.floor(sorted.length / 2);
   if (sorted.length === 0) return null;
-  return sorted.length % 2 !== 0 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
+  return sorted.length % 2 !== 0
+    ? sorted[mid]
+    : (sorted[mid - 1] + sorted[mid]) / 2;
 };
 
 const determineFitnessLevel = (median) => {
@@ -69,7 +72,9 @@ const determineFitnessLevel = (median) => {
 
 const Quiz = () => {
   const [answers, setAnswers] = useState(Array(questions.length).fill(null));
-  const navigate = useNavigate(); 
+  const [fitnessLevel, setFitnessLevel] = useState(null);
+  const [quizCompleted, setQuizCompleted] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (index, optionIndex) => {
     const newAnswers = [...answers];
@@ -84,10 +89,13 @@ const Quiz = () => {
       return;
     }
     const median = calculateMedian(answers);
-    const fitnessLevel = determineFitnessLevel(median);
+    const level = determineFitnessLevel(median);
+    setFitnessLevel(level);
+    setQuizCompleted(true);
+  };
 
-    // Redirect to SuggestedTrails page with fitness level as state
-    navigate('/suggested-trails', { state: { fitnessLevel } });
+  const handleRedirect = () => {
+    navigate("/SuggestedTrails", { state: { fitnessLevel } });
   };
 
   return (
@@ -112,8 +120,20 @@ const Quiz = () => {
             ))}
           </div>
         ))}
-        <button type="submit">Find Your Trail Level</button>
+        {!quizCompleted ? (
+          <button type="submit">Submit Quiz</button>
+        ) : (
+          <button type="button" onClick={handleRedirect}>
+            Find Suggested Trails
+          </button>
+        )}
       </form>
+
+      {quizCompleted && (
+        <div className="result-section">
+          <h2>Your Fitness Level: {fitnessLevel}</h2>
+        </div>
+      )}
     </div>
   );
 };
