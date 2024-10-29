@@ -16,9 +16,11 @@ const BrowseTrails = () => {
   const TRAIL_API_KEY = "63a3cf94e0042b9c67abf0892fc1d223";
   const TRAIL_API_APPLICATION_ID = "9IOACG5NHE";
 
+  // Fetch trails from API
   const fetchTrails = async () => {
     setLoading(true);
     setError("");
+
     try {
       const response = await fetch(TRAIL_API_BASE_URL, {
         method: "POST",
@@ -27,7 +29,22 @@ const BrowseTrails = () => {
           "X-Algolia-API-Key": TRAIL_API_KEY,
           "X-Algolia-Application-Id": TRAIL_API_APPLICATION_ID,
         },
-        body: JSON.stringify({ query: "", hitsPerPage: 50 }),
+        body: JSON.stringify({
+          query: "",
+          filters: "type:trail",
+          hitsPerPage: 50,
+          attributesToRetrieve: [
+            "name",
+            "length",
+            "difficulty",
+            "rating",
+            "url",
+            "photos",
+            "location",
+            "description",
+            "_geoloc",
+          ],
+        }),
       });
 
       if (!response.ok) {
@@ -35,9 +52,16 @@ const BrowseTrails = () => {
       }
 
       const data = await response.json();
-      console.log("API Response:", data);
-      if (data.hits) {
-        setTrails(data.hits);
+      if (data.hits && data.hits.length > 0) {
+        // Format trail data
+        const formattedTrails = data.hits.map((trail) => ({
+          ...trail,
+          imageUrl: trail.photos?.[0]?.url || "https://via.placeholder.com/300",
+          difficulty: trail.difficulty || "Not specified",
+          length: trail.length ? `${trail.length.toFixed(1)}` : "Not specified",
+          rating: trail.rating ? trail.rating.toFixed(1) : "N/A",
+        }));
+        setTrails(formattedTrails);
       } else {
         setError("No trails found.");
       }
@@ -49,15 +73,18 @@ const BrowseTrails = () => {
     }
   };
 
+  // Run fetchTrails on component mount
   useEffect(() => {
     fetchTrails();
   }, []);
 
+  // Filter trails based on search query
   const filteredTrails = trails.filter(
     (trail) =>
       trail.name && trail.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  // Calculate pagination
   const indexOfLastTrail = currentPage * trailsPerPage;
   const indexOfFirstTrail = indexOfLastTrail - trailsPerPage;
   const currentTrails = filteredTrails.slice(
@@ -65,8 +92,10 @@ const BrowseTrails = () => {
     indexOfLastTrail
   );
 
+  // Handle pagination change
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  // Toggle trail bookmark status
   const toggleBookmark = (trailId) => {
     setBookmarkedTrails((prevState) => ({
       ...prevState,
@@ -102,21 +131,21 @@ const BrowseTrails = () => {
             {currentTrails.map((trail) => (
               <div key={trail.objectID} className="trail-card">
                 <img
-                  src={trail.imageUrl || "https://via.placeholder.com/300"}
+                  src={trail.imageUrl}
                   alt={trail.name}
                   className="trail-image"
                 />
                 <div className="trail-info">
                   <h3 className="trail-name">{trail.name}</h3>
                   <p className="trail-distance">
-                    Distance: {trail.length || "N/A"} mi
+                    Distance: {trail.length} mi
                   </p>
                   <p className="trail-difficulty">
-                    Difficulty: {trail.difficulty || "N/A"}
+                    Difficulty: {trail.difficulty}
                   </p>
                   <div className="trail-meta">
                     <Star className="trail-icon" />
-                    <span>{trail.rating || "N/A"}</span>
+                    <span>{trail.rating}</span>
                     <Bookmark
                       className={`trail-bookmark ${
                         bookmarkedTrails[trail.objectID] ? "bookmarked" : ""
@@ -140,17 +169,17 @@ const BrowseTrails = () => {
 
         {/* Pagination */}
         <div className="pagination">
-          {[
-            ...Array(Math.ceil(filteredTrails.length / trailsPerPage)).keys(),
-          ].map((number) => (
+          {Array.from({
+            length: Math.ceil(filteredTrails.length / trailsPerPage),
+          }).map((_, index) => (
             <button
-              key={number}
-              onClick={() => paginate(number + 1)}
+              key={index}
+              onClick={() => paginate(index + 1)}
               className={`page-link ${
-                currentPage === number + 1 ? "active" : ""
+                currentPage === index + 1 ? "active" : ""
               }`}
             >
-              {number + 1}
+              {index + 1}
             </button>
           ))}
         </div>
