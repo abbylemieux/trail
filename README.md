@@ -61,5 +61,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Links 
 
-### Repo:
+### Repo: https://github.com/abbylemieux/trailTrekker.io.git
 ### Render: 
