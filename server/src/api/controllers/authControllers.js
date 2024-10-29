@@ -10,7 +10,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.loginUser = exports.registerUser = void 0;
+exports.registerUserHandler = registerUserHandler;
 const authServices_1 = require("../services/authServices");
+const registrationService_1 = require("../services/registrationService");
 const registerUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { email, password, name } = req.body;
@@ -35,3 +37,18 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.loginUser = loginUser;
+function registerUserHandler(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const { email, password, objectId } = req.body;
+        try {
+            const registrationData = Object.assign({ email,
+                password }, (objectId && { objectId }));
+            const result = yield (0, registrationService_1.registrationService)(registrationData);
+            res.status(201).json(result);
+        }
+        catch (error) {
+            const errorMessage = error.message || 'Internal Server Error';
+            res.status(500).json({ message: errorMessage });
+        }
+    });
+}
