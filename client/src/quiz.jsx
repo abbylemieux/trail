@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles/Quiz.css";
 
+
 const questions = [
   {
     question:
@@ -94,8 +95,7 @@ const Quiz = () => {
   };
 
   const handleRedirect = () => {
-    // Redirect to SuggestedTrails page with fitness level as state
-    navigate("/suggested-trails", { state: { fitnessLevel } });
+    navigate("/SuggestedTrails", { state: { fitnessLevel } });
   };
 
   return (
