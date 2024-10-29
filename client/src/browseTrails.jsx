@@ -79,7 +79,7 @@ const BrowseTrails = () => {
   return (
     <div className="page-container">
       {/* Hero Section */}
-      <div className="hero-section">
+      <div className="hero-section1">
         <h1 className="hero-title">Find Your Outside</h1>
         <div className="search-container">
           <input

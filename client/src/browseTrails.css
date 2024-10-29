@@ -8,7 +8,8 @@
   }
   
   /* Hero Section */
-  .hero-section {
+  .hero-section1 {
+    margin-top: 25px;
     height: 200px;
     background: linear-gradient(to bottom, #84A98C, #CAD2C5); /* Cambridge Blue to Ash Gray */
     display: flex;
