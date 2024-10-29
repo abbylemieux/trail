@@ -1,0 +1,160 @@
+/* General Page Container */
+.page-container {
+    font-family: 'Arial', sans-serif;
+    background-color: #CAD2C5; /* Ash Gray */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    height: 200px;
+    background: linear-gradient(to bottom, #84A98C, #CAD2C5); /* Cambridge Blue to Ash Gray */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2F3E46; /* Charcoal */
+    margin-bottom: 0.5rem;
+  }
+  
+  .search-container {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #52796F; /* Hooker's Green */
+    border-radius: 30px;
+    font-size: 1rem;
+    background-color: #F0F4F8; /* Light Gray for better contrast */
+  }
+  
+  .search-input:focus {
+    outline: none;
+    border-color: #52796F; /* Hooker's Green */
+  }
+  
+  /* Trail Section */
+  .trail-section {
+    padding: 2rem 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #2F3E46; /* Charcoal */
+  }
+  
+  .trail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(4, 1fr); /* Max 4 columns */
+    gap: 1rem;
+  }
+  
+  .trail-card {
+    background-color: #ffffff; /* White for card background */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(159, 11, 11, 0.1);
+  }
+  
+  .trail-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .trail-info {
+    padding: 1rem;
+    background-color: #eef2eb; /* Ash Gray for card info background */
+  }
+  
+  .trail-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #2F3E46; /* Charcoal */
+  }
+  
+  .trail-distance,
+  .trail-difficulty {
+    color: #52796F; /* Hooker's Green */
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+  }
+  
+  .trail-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .trail-icon {
+    color: #F4A261; /* Amber for star icon */
+  }
+  
+  .trail-bookmark {
+    color: #354F52; /* Dark Slate Gray */
+    cursor: pointer;
+  }
+  
+  .trail-bookmark.bookmarked {
+    color: #52796F; /* Hooker's Green when bookmarked */
+  }
+  
+  .view-trail-button {
+    margin-top: 0.75rem;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: #354F52; /* Dark Slate Gray */
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  .view-trail-button:hover {
+    background-color: #2F3E46; /* Charcoal */
+  }
+  
+  /* Pagination */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  .page-link {
+    padding: 0.5rem 1rem;
+    margin: 0 0.2rem;
+    background-color: #84A98C; /* Cambridge Blue */
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+  }
+  
+  .page-link:hover {
+    background-color: #52796F; /* Hooker's Green */
+  }
+  
+  .page-link.active {
+    background-color: #2F3E46; /* Charcoal */
+    color: white;
+  }
+  

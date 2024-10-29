@@ -3,8 +3,6 @@ import { Outlet, Link } from 'react-router-dom'
 import '/src/Styles/Nav.css'
 
 
-
-
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
