@@ -19,7 +19,7 @@ const LandingPage = () => {
           <div className="cta-buttons">
             <Link className='secondary-btn' to="/quiz">Take Your fitness assessment!</Link>
             <Link className="primary-btn" to="/sign-up">Sign Up</Link>
-            <button className="secondary-btn">Browse Trails</button>
+            <Link className="secondary-btn" to="/browse-trails">Browse Trails</Link>
           </div>
         </div>
       </section>
