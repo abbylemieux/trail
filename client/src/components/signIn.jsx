@@ -13,13 +13,17 @@ const SignIn = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const response = await axios.post('/api/auth/login', {email, password});
-            localStorage.setItem('token', response.data.token);
-            navigate('/dashboard');
-        } catch (error) {
-            setError('Invalid email or password');
-        }
+        console.log('Form submitted');
+    };
+
+    const handleEmailChange = (e) => {
+        console.log('Email input changed');
+        setEmail(e.target.value);
+    };
+    
+    const handlePasswordChange = (e) => {
+        console.log('Password input changed');
+        setPassword(e.target.value);
     };
 
     return (
@@ -31,15 +35,16 @@ const SignIn = () => {
                         label="Email"
                         placeholder="Enter your email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={handleEmailChange}    
                         required
+                        labelProps={{ style: { color: 'inherit' }, required: false }}
                     />
                     <TextInput
                         label="Password"
                         placeholder="Enter your password"
                         type="password"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        onChange={handlePasswordChange}
                     />
                     <Button type="submit">Sign In</Button>
                 </form>
