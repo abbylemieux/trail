@@ -21,34 +21,56 @@ const BrowseTrails = () => {
     setLoading(true);
     setError('');
     try {
-      const response = await fetch(TRAIL_API_BASE_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Algolia-API-Key': TRAIL_API_KEY,
-          'X-Algolia-Application-Id': TRAIL_API_APPLICATION_ID,
-        },
-        body: JSON.stringify({ query: '', hitsPerPage: 50 }),
-      });
+        const response = await fetch(TRAIL_API_BASE_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Algolia-API-Key': TRAIL_API_KEY,
+                'X-Algolia-Application-Id': TRAIL_API_APPLICATION_ID,
+            },
+            body: JSON.stringify({
+                query: '',
+                filters: 'type:trail',  // Add this line to filter for trails only
+                hitsPerPage: 50,
+                attributesToRetrieve: [
+                    'name',
+                    'length',
+                    'difficulty',
+                    'rating',
+                    'url',
+                    'photos',
+                    'location',
+                    'description',
+                    '_geoloc'
+                ]
+            }),
+        });
 
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status} ${response.statusText}`);
-      }
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status} ${response.statusText}`);
+        }
 
-      const data = await response.json();
-      console.log('API Response:', data); // Debugging
-      if (data.hits) {
-        setTrails(data.hits);
-      } else {
-        setError('No trails found.');
-      }
+        const data = await response.json();
+        if (data.hits) {
+            // Add some data transformation if needed
+            const formattedTrails = data.hits.map(trail => ({
+                ...trail,
+                imageUrl: trail.photos?.[0]?.url || 'https://via.placeholder.com/300',
+                difficulty: trail.difficulty || 'Not specified',
+                length: trail.length ? `${trail.length.toFixed(1)}` : 'Not specified',
+                rating: trail.rating ? trail.rating.toFixed(1) : 'N/A'
+            }));
+            setTrails(formattedTrails);
+        } else {
+            setError('No trails found.');
+        }
     } catch (error) {
-      console.error('Fetch error:', error);
-      setError('Failed to fetch trails. Please try again later.');
+        console.error('Fetch error:', error);
+        setError('Failed to fetch trails. Please try again later.');
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
-  };
+};
 
   // Fetch trails on component mount
   useEffect(() => {
