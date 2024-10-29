@@ -55,6 +55,8 @@ body {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
   text-align: center;
+  font-size: 35px;
+  color: #333;
 }
 
 .input-group {

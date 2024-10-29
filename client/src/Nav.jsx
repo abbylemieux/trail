@@ -17,7 +17,7 @@ const Navbar = () => {
 
                 <div className={`navbar-links ${isOpen ? 'active' : ''}`}>
                     
-                    <Link className='navlink1' to="/log-in">Log in</Link>
+                    <Link className='navlink1' to="/log-in">Sign In</Link>
                     <Link className='navlink1' to="/for-you">For You</Link>
                     <Link className='navlink1' to="/browse-trails">Browse Trails</Link>
                     <Link className='navlink1' to="/your-trails">Your Trails</Link>
