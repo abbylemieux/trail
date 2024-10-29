@@ -7,8 +7,8 @@ import LandingPage from './landingPage.jsx';
 import Register from './components/Register.jsx';
 import SignIn from './components/signIn.jsx';
 import Quiz from './quiz.jsx';
-import ApiDataComponent from './components/ApiDataComponent.jsx';
 import BrowseTrails from './browseTrails.jsx'
+import SuggestedTrails from './SuggestedTrails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'for-you',
-        element: <ApiDataComponent />
+        element: <SuggestedTrails />
       },
       {
         path: 'your-trails',
