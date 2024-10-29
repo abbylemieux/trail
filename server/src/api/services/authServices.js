@@ -25,7 +25,7 @@ const register = (_a) => __awaiter(void 0, [_a], void 0, function* ({ email, pas
     const user = yield user_1.default.create({ email, password: hashedPassword, name });
     if (user) {
         console.log('User registered successfully');
-        return generateToken(user.id);
+        return generateToken(String(user.id));
     }
     else {
         throw new Error('Failed to register user');
@@ -37,6 +37,6 @@ const login = (_a) => __awaiter(void 0, [_a], void 0, function* ({ email, passwo
     if (!user || !(yield user.comparePassword(password))) {
         throw new Error('Invalid login');
     }
-    return generateToken(user.id);
+    return generateToken(String(user.id));
 });
 exports.login = login;

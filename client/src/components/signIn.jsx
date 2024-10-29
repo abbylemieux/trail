@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {TextInput, Button, Title, Container} from "@mantine/core";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
-
+import "./signIn.css";
 
 
 const SignIn = () => {
@@ -23,28 +23,30 @@ const SignIn = () => {
     };
 
     return (
-        <Container>
-            <Title>Sign In </Title>
-            <form onSubmit={handleSubmit}>
-                <TextInput
-                    label="Email"
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-                <TextInput
-                    label="Password"
-                    placeholder="Enter your password"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
+        <div className="sign-in-container">
+            <Container>
+                <Title className="title">Sign In</Title>
+                <form onSubmit={handleSubmit}>
+                    <TextInput
+                        label="Email"
+                        placeholder="Enter your email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
+                    <TextInput
+                        label="Password"
+                        placeholder="Enter your password"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
                     <Button type="submit">Sign In</Button>
                 </form>
-        </Container>
+                {error && <div className="error">{error}</div>}
+            </Container>
+        </div>
     );
 };
 
 export default SignIn;
-

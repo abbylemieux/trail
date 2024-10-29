@@ -1,7 +1,12 @@
 // misc/queries.ts
-import { Pool, QueryResult } from 'pg';
 import pool from './db';
-import { User, TrailReference, UserTrailInteraction, Review, HikingHistory, DatabaseError } from './dbindex';
+import HikingHistory from '../src/models/HikingHistory';
+import Review from '../src/models/Review';
+import TrailReference from '../src/models/TrailReference';
+import User from '../src/models/user';
+import UserTrailInteraction from '../src/models/UserTrailInteraction';
+
+import { DatabaseError } from 'sequelize';
 
 export default class DatabaseQueries {
     // User Queries
@@ -13,7 +18,12 @@ export default class DatabaseQueries {
             );
             return result.rows[0];
         } catch (error) {
-            throw new DatabaseError(`Error creating user: ${(error as Error).message}`);
+            throw new DatabaseError({
+                name: 'DatabaseError',
+                message: (error as Error).message,
+                // original: error as Error,
+                sql: '' // Add the SQL query that caused the error if available
+            });
         }
     }
 
@@ -25,7 +35,12 @@ export default class DatabaseQueries {
             );
             return result.rows[0] || null;
         } catch (error) {
-            throw new DatabaseError(`Error fetching user: ${(error as Error).message}`);
+            throw new DatabaseError({
+                name: 'DatabaseError',
+                message: (error as Error).message,
+                // original: error as Error,
+                sql: '' // Add the SQL query that caused the error if available
+            });
         }
     }
 
@@ -37,7 +52,12 @@ export default class DatabaseQueries {
             );
             return result.rows[0] || null;
         } catch (error) {
-            throw new DatabaseError(`Error fetching user by email: ${(error as Error).message}`);
+            throw new DatabaseError({
+                name: 'DatabaseError',
+                message: (error as Error).message,
+                // original: error as Error,
+                sql: '' // Add the SQL query that caused the error if available
+            });
         }
     }
 
@@ -56,7 +76,12 @@ export default class DatabaseQueries {
             );
             return result.rows[0];
         } catch (error) {
-            throw new DatabaseError(`Error adding trail interaction: ${(error as Error).message}`);
+            throw new DatabaseError({
+                name: 'DatabaseError',
+                message: (error as Error).message,
+                // original: error as Error,
+                sql: '' // Add the SQL query that caused the error if available
+            });
         }
     }
 
@@ -76,7 +101,12 @@ export default class DatabaseQueries {
             );
             return result.rows[0];
         } catch (error) {
-            throw new DatabaseError(`Error adding review: ${(error as Error).message}`);
+            throw new DatabaseError({
+                name: 'DatabaseError',
+                message: (error as Error).message,
+                // original: error as Error,
+                sql: '' // Add the SQL query that caused the error if available
+            });
         }
     }
 
@@ -97,7 +127,12 @@ export default class DatabaseQueries {
             );
             return result.rows[0];
         } catch (error) {
-            throw new DatabaseError(`Error adding hiking record: ${(error as Error).message}`);
+            throw new DatabaseError({
+                name: 'DatabaseError',
+                message: (error as Error).message,
+                // original: error as Error,
+                sql: '' // Add the SQL query that caused the error if available
+            });
         }
     }
 
@@ -116,7 +151,12 @@ export default class DatabaseQueries {
             );
             return result.rows;
         } catch (error) {
-            throw new DatabaseError(`Error fetching popular trails: ${(error as Error).message}`);
+            throw new DatabaseError({
+                name: 'DatabaseError',
+                message: (error as Error).message,
+                // original: error as Error,
+                sql: '' // Add the SQL query that caused the error if available
+            });
         }
     }
 
@@ -136,7 +176,13 @@ export default class DatabaseQueries {
             );
             return result.rows[0];
         } catch (error) {
-            throw new DatabaseError(`Error fetching user stats: ${(error as Error).message}`);
+            throw new DatabaseError({
+                name: 'DatabaseError',
+                message: (error as Error).message,
+                // parent: error as Error,
+                // original: error as Error,
+                sql: '' // Add the SQL query that caused the error if available
+            });
         }
     }
 }

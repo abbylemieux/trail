@@ -105,6 +105,14 @@
 
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
-    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
-  }
+    "skipLibCheck": true,    /* Skip type checking all .d.ts files. */
+    "moduleResolution": "node",
+    "baseUrl": ".",           // Enables baseUrl for relative imports
+    "paths": {
+      "Server/*": ["./src/*"],  // Maps "Server" alias to the src folder
+      "Server/src/models/*": ["./src/models/*"],  // Maps models folder under Server alias
+      "Server/.env*": ["./.env"]  // Maps .env file under Server alias
+    },
+  },
+  "include": ["src/**/*", "database/**/*"]
 }

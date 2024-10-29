@@ -1,5 +1,5 @@
 -- schema.sql
-\c trail_finder_db
+\c postgres
 
 
 -- Users table
