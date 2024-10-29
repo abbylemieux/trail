@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { ArrowRight, Star, Bookmark } from 'lucide-react';
 import './BrowseTrails.css';
@@ -16,61 +17,72 @@ const BrowseTrails = () => {
   const TRAIL_API_KEY = '63a3cf94e0042b9c67abf0892fc1d223';
   const TRAIL_API_APPLICATION_ID = '9IOACG5NHE';
 
+  const getRandomNatureImage = () => {
+    const placeholderImages = [
+      'https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3',  // Hiking trail
+      'https://images.unsplash.com/photo-1527489377706-5bf97e608852?ixlib=rb-4.0.3',  // Mountain trail
+      'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3',  // Forest
+      'https://images.unsplash.com/photo-1665955768907-73686b2f351d?ixlib=rb-4.0.3',  // Nature path
+      'https://images.unsplash.com/photo-1587502537745-84b86da1204f?ixlib=rb-4.0.3',   // Scenic trail
+      'https://images.unsplash.com/photo-1591815707291-b18c9f24fb40?ixlib=rb-4.0.3',  // Mountain view
+      'https://images.unsplash.com/photo-1580238053495-b9720401fd45?ixlib=rb-4.0.3',  // Valley view
+      'https://images.unsplash.com/photo-1571983823232-07c47c4527a0?ixlib=rb-4.0.3',  // Forest path
+    ];
+
+    return placeholderImages[Math.floor(Math.random() * placeholderImages.length)];
+  };
+
   // Fetch trails from the API
   const fetchTrails = async () => {
     setLoading(true);
     setError('');
     try {
-        const response = await fetch(TRAIL_API_BASE_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-Algolia-API-Key': TRAIL_API_KEY,
-                'X-Algolia-Application-Id': TRAIL_API_APPLICATION_ID,
-            },
-            body: JSON.stringify({
-                query: '',
-                filters: 'type:trail',  // Add this line to filter for trails only
-                hitsPerPage: 50,
-                attributesToRetrieve: [
-                    'name',
-                    'length',
-                    'difficulty',
-                    'rating',
-                    'url',
-                    'photos',
-                    'location',
-                    'description',
-                    '_geoloc'
-                ]
-            }),
-        });
+      const response = await fetch(TRAIL_API_BASE_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Algolia-API-Key': TRAIL_API_KEY,
+          'X-Algolia-Application-Id': TRAIL_API_APPLICATION_ID,
+        },
+        body: JSON.stringify({
+          query: '',
+          filters: 'type:trail',
+          hitsPerPage: 50,
+          attributesToRetrieve: [
+            'name',
+            'length',
+            'difficulty',
+            'rating',
+            'url',
+            'location',
+            'description'
+          ]
+        }),
+      });
 
-        if (!response.ok) {
-            throw new Error(`Error: ${response.status} ${response.statusText}`);
-        }
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status} ${response.statusText}`);
+      }
 
-        const data = await response.json();
-        if (data.hits) {
-            // Add some data transformation if needed
-            const formattedTrails = data.hits.map(trail => ({
-                ...trail,
-                imageUrl: trail.photos?.[0]?.url || 'https://via.placeholder.com/300',
-                difficulty: trail.difficulty || 'Not specified',
-                length: trail.length ? `${trail.length.toFixed(1)}` : 'Not specified',
-                rating: trail.rating ? trail.rating.toFixed(1) : 'N/A'
-            }));
-            setTrails(formattedTrails);
-        } else {
-            setError('No trails found.');
-        }
+      const data = await response.json();
+      console.log('Trail data:', data); // Debug log
+      
+      if (data.hits) {
+        const formattedTrails = data.hits.map(trail => ({
+          ...trail,
+          imageUrl: getRandomNatureImage()
+        }));
+        setTrails(formattedTrails);
+      } else {
+        setError('No trails found.');
+      }
     } catch (error) {
-        console.error('Fetch error:', error);
-        setError('Failed to fetch trails. Please try again later.');
+      console.error('Fetch error:', error);
+      setError('Failed to fetch trails. Please try again later.');
     } finally {
-        setLoading(false);
+      setLoading(false);
     }
-};
+  };
 
   // Fetch trails on component mount
   useEffect(() => {
@@ -126,9 +138,13 @@ const BrowseTrails = () => {
             {currentTrails.map((trail) => (
               <div key={trail.objectID} className="trail-card">
                 <img
-                  src={trail.imageUrl || 'https://via.placeholder.com/300'}
-                  alt={trail.name}
+                  src={trail.imageUrl}
+                  alt={trail.name || 'Trail view'}
                   className="trail-image"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = 'https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3';
+                  }}
                 />
                 <div className="trail-info">
                   <h3 className="trail-name">{trail.name}</h3>
@@ -174,3 +190,4 @@ const BrowseTrails = () => {
 };
 
 export default BrowseTrails;
+
