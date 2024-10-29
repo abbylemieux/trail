@@ -5,6 +5,7 @@ import App from './App.jsx'
 import LandingPage from './landingPage.jsx';
 import Register from './components/Register.jsx'
 import SignIn from './components/signIn.jsx'
+import Quiz from './quiz.jsx';
 
 
 const router = createBrowserRouter([
@@ -23,7 +24,11 @@ const router = createBrowserRouter([
       {
         path: 'log-in',
         element: <SignIn />,
-      }
+      },
+      {
+        path: 'quiz',
+        element: <Quiz />
+      }  
     ],
   },
 ]);

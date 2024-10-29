@@ -1,6 +1,11 @@
 // misc/queries.ts
 import pool from './db';
-import { User, UserTrailInteraction, Review, HikingHistory, TrailReference } from '../src/models';
+import HikingHistory from '../src/models/HikingHistory';
+import Review from '../src/models/Review';
+import TrailReference from '../src/models/TrailReference';
+import User from '../src/models/user';
+import UserTrailInteraction from '../src/models/UserTrailInteraction';
+
 import { DatabaseError } from 'sequelize';
 
 export default class DatabaseQueries {
