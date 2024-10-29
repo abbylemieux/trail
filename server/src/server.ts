@@ -8,10 +8,10 @@ import errorHandler from './api/middlewares/errorHandler';
 import { authMiddleware } from './api/middlewares/authMiddleware';
 import authRoutes from './api/routes/authRoutes';
 
-dotenv.config();
+dotenv.config({ path: '../server/.env' });
 
 const app: Application = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 const corsOptions: CorsOptions ={
     origin: process.env.CLIENT_URL || 'http://localhost:3001',

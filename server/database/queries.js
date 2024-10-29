@@ -12,8 +12,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// misc/queries.ts
 const db_1 = __importDefault(require("./db"));
-const dbindex_1 = require("./dbindex");
+const sequelize_1 = require("sequelize");
 class DatabaseQueries {
     // User Queries
     static createUser(username, email, password) {
@@ -23,7 +24,12 @@ class DatabaseQueries {
                 return result.rows[0];
             }
             catch (error) {
-                throw new dbindex_1.DatabaseError(`Error creating user: ${error.message}`);
+                throw new sequelize_1.DatabaseError({
+                    name: 'DatabaseError',
+                    message: error.message,
+                    // original: error as Error,
+                    sql: '' // Add the SQL query that caused the error if available
+                });
             }
         });
     }
@@ -34,7 +40,12 @@ class DatabaseQueries {
                 return result.rows[0] || null;
             }
             catch (error) {
-                throw new dbindex_1.DatabaseError(`Error fetching user: ${error.message}`);
+                throw new sequelize_1.DatabaseError({
+                    name: 'DatabaseError',
+                    message: error.message,
+                    // original: error as Error,
+                    sql: '' // Add the SQL query that caused the error if available
+                });
             }
         });
     }
@@ -45,7 +56,12 @@ class DatabaseQueries {
                 return result.rows[0] || null;
             }
             catch (error) {
-                throw new dbindex_1.DatabaseError(`Error fetching user by email: ${error.message}`);
+                throw new sequelize_1.DatabaseError({
+                    name: 'DatabaseError',
+                    message: error.message,
+                    // original: error as Error,
+                    sql: '' // Add the SQL query that caused the error if available
+                });
             }
         });
     }
@@ -59,7 +75,12 @@ class DatabaseQueries {
                 return result.rows[0];
             }
             catch (error) {
-                throw new dbindex_1.DatabaseError(`Error adding trail interaction: ${error.message}`);
+                throw new sequelize_1.DatabaseError({
+                    name: 'DatabaseError',
+                    message: error.message,
+                    // original: error as Error,
+                    sql: '' // Add the SQL query that caused the error if available
+                });
             }
         });
     }
@@ -73,7 +94,12 @@ class DatabaseQueries {
                 return result.rows[0];
             }
             catch (error) {
-                throw new dbindex_1.DatabaseError(`Error adding review: ${error.message}`);
+                throw new sequelize_1.DatabaseError({
+                    name: 'DatabaseError',
+                    message: error.message,
+                    // original: error as Error,
+                    sql: '' // Add the SQL query that caused the error if available
+                });
             }
         });
     }
@@ -87,7 +113,12 @@ class DatabaseQueries {
                 return result.rows[0];
             }
             catch (error) {
-                throw new dbindex_1.DatabaseError(`Error adding hiking record: ${error.message}`);
+                throw new sequelize_1.DatabaseError({
+                    name: 'DatabaseError',
+                    message: error.message,
+                    // original: error as Error,
+                    sql: '' // Add the SQL query that caused the error if available
+                });
             }
         });
     }
@@ -105,7 +136,12 @@ class DatabaseQueries {
                 return result.rows;
             }
             catch (error) {
-                throw new dbindex_1.DatabaseError(`Error fetching popular trails: ${error.message}`);
+                throw new sequelize_1.DatabaseError({
+                    name: 'DatabaseError',
+                    message: error.message,
+                    // original: error as Error,
+                    sql: '' // Add the SQL query that caused the error if available
+                });
             }
         });
     }
@@ -124,7 +160,13 @@ class DatabaseQueries {
                 return result.rows[0];
             }
             catch (error) {
-                throw new dbindex_1.DatabaseError(`Error fetching user stats: ${error.message}`);
+                throw new sequelize_1.DatabaseError({
+                    name: 'DatabaseError',
+                    message: error.message,
+                    // parent: error as Error,
+                    // original: error as Error,
+                    sql: '' // Add the SQL query that caused the error if available
+                });
             }
         });
     }

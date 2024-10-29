@@ -24,7 +24,7 @@ export const register = async ({email, password, name}: RegisterParams): Promise
     const user = await User.create({ email, password: hashedPassword, name });
     if (user) {
         console.log('User registered successfully');
-        return generateToken(user.id);
+        return generateToken(String(user.id));
     } else {
         throw new Error('Failed to register user');
     }
@@ -35,5 +35,5 @@ export const login = async ({email, password}: LoginParams): Promise<string> => 
     if (!user || !(await user.comparePassword(password))) {
         throw new Error('Invalid login');
     }
-    return generateToken(user.id);
+    return generateToken(String(user.id));
 };

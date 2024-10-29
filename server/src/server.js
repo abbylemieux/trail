@@ -12,9 +12,9 @@ const userRoutes_1 = __importDefault(require("./api/routes/userRoutes"));
 const errorHandler_1 = __importDefault(require("./api/middlewares/errorHandler"));
 const authMiddleware_1 = require("./api/middlewares/authMiddleware");
 const authRoutes_1 = __importDefault(require("./api/routes/authRoutes"));
-dotenv_1.default.config();
+dotenv_1.default.config({ path: '../server/.env' });
 const app = (0, express_1.default)();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 const corsOptions = {
     origin: process.env.CLIENT_URL || 'http://localhost:3001',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
