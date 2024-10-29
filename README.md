@@ -53,7 +53,7 @@ To use the application, navigate to `http://localhost:3000` in your web browser.
 
 ## Screenshot
 
-![Screenshot of TrailTrekker.io](assets/screenshot.png)
+![Screenshot of TrailTrekker.io](client/src/assets/screenshot.png)
 
 ## License 
 
