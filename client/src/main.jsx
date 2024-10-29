@@ -8,6 +8,7 @@ import Register from './components/Register.jsx';
 import SignIn from './components/signIn.jsx';
 import Quiz from './quiz.jsx';
 import ApiDataComponent from './components/ApiDataComponent.jsx';
+import BrowseTrails from './browseTrails.jsx'
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,11 @@ const router = createBrowserRouter([
       {
         path: 'your-trails',
         element: <YourTrails />
-      }  
+      },
+      {
+        path: 'browse-trails',
+        element: <BrowseTrails />
+      }
     ],
   },
 ]);
