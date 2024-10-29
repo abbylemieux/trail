@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import '/src/styles/YourTrails.css'
 
 const HikesAlreadyDone = () => {
   const [hikes, setHikes] = useState([]);
@@ -29,25 +30,25 @@ const HikesAlreadyDone = () => {
 
   return (
     <div>
-      <h1>Hikes Already Done</h1>
+      <h1 className='title1'>Hikes Already Done</h1>
       <input
         type="text"
         value={hikeName}
         onChange={(e) => setHikeName(e.target.value)}
         placeholder="Enter hike name"
       />
-      <button onClick={addHike}>Add Hike</button>
+      <button className="button" onClick={addHike}>Add Hike</button>
       
       <ul>
         {hikes.map((hike, index) => (
           <li key={index}>
             {hike}
-            <button onClick={() => removeHike(hike)}>Remove</button>
+            <button className="button2" onClick={() => removeHike(hike)}>Remove</button>
           </li>
         ))}
       </ul>
 
-      {hikes.length === 0 && <p>No hikes added yet. Add some!</p>}
+      {hikes.length === 0 && <p className='hikes'>No hikes added yet. Add some!</p>}
     </div>
   );
 };

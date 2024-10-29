@@ -1,0 +1,25 @@
+*{
+    background-color: 32553;
+}
+.title1 {
+    margin-top: 15%;
+}
+
+
+.hikes {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(42, 21, 21);
+    padding: 15px;
+}
+.button2 {
+    padding: 3px;
+    margin-left: 5px;
+    font-size: 10px;
+}
+.button {
+    padding: 15px;
+    margin-left: 46%;
+    font-size: 18px;
+}
