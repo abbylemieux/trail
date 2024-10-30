@@ -1,70 +1,53 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './SignIn.css';
+import React, {useState} from "react";
+import {Title, Container} from "@mantine/core";
+import {useNavigate} from "react-router-dom";
+import axios from "axios";
+import "./signIn.css";
 
 const SignIn = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+    const [error, setError] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            // Your sign-in logic here
-        } catch (error) {
-            setError('Invalid email or password');
-        }
+        console.log('Form submitted');
+    };
+
+    const handleEmailChange = (e) => {
+        console.log('Email input changed');
+        setEmail(e.target.value);
+    };
+    
+    const handlePasswordChange = (e) => {
+        console.log('Password input changed');
+        setPassword(e.target.value);
     };
 
     return (
         <div className="sign-in-container">
-            <Link to="/" className="logo2">TrailTrekker</Link>
-            
-            <div className="signin-form">
-                <h2 className="form-title">Welcome Back</h2>
-                
+            <Container>
+                <Title className="title">Sign In</Title>
                 <form onSubmit={handleSubmit}>
-                    <div className="input-group">
-                        <label htmlFor="email">Email</label>
-                        <input
-                            type="email"
-                            id="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="Enter your email"
-                            required
-                        />
-                    </div>
-
-                    <div className="input-group">
-                        <label htmlFor="password">Password</label>
-                        <input
-                            type="password"
-                            id="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="Enter your password"
-                            required
-                        />
-                    </div>
-
-                    {error && <div className="error-message">{error}</div>}
-
-                    <button type="submit" className="signin-button">
-                        Sign In
-                    </button>
-
-                    <div className="additional-options">
-                        <Link to="/forgot-password" className="forgot-password">
-                            Forgot Password?
-                        </Link>
-                    </div>
-
-                    <div className="register-link">
-                        Don't have an account? <Link to="/register">Register here</Link>
-                    </div>
+                    <input
+                        type="text"
+                        placeholder="Enter your email"
+                        value={email}
+                        onChange={handleEmailChange}    
+                        required
+                    />
+                    <input
+                        type="password"
+                        placeholder="Enter your password"
+                        value={password}
+                        onChange={handlePasswordChange}
+                        required
+                    />
+                    <button type="submit">Sign In</button>
                 </form>
-            </div>
+                {error && <div className="error">{error}</div>}
+            </Container>
         </div>
     );
 };
