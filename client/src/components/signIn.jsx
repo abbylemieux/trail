@@ -1,9 +1,8 @@
 import React, {useState} from "react";
-import {TextInput, Button, Title, Container} from "@mantine/core";
+import {Title, Container} from "@mantine/core";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import "./signIn.css";
-
 
 const SignIn = () => {
     const [email, setEmail] = useState("");
@@ -31,22 +30,21 @@ const SignIn = () => {
             <Container>
                 <Title className="title">Sign In</Title>
                 <form onSubmit={handleSubmit}>
-                    <TextInput
-                        label="Email"
+                    <input
+                        type="text"
                         placeholder="Enter your email"
                         value={email}
                         onChange={handleEmailChange}    
                         required
-                        labelProps={{ style: { color: 'inherit' }, required: false }}
                     />
-                    <TextInput
-                        label="Password"
-                        placeholder="Enter your password"
+                    <input
                         type="password"
+                        placeholder="Enter your password"
                         value={password}
                         onChange={handlePasswordChange}
+                        required
                     />
-                    <Button type="submit">Sign In</Button>
+                    <button type="submit">Sign In</button>
                 </form>
                 {error && <div className="error">{error}</div>}
             </Container>

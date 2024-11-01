@@ -134,6 +134,10 @@ const BrowseTrails = () => {
                   src={trail.imageUrl}
                   alt={trail.name}
                   className="trail-image"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = 'https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3';
+                  }}
                 />
                 <div className="trail-info">
                   <h3 className="trail-name">{trail.name}</h3>
@@ -189,3 +193,4 @@ const BrowseTrails = () => {
 };
 
 export default BrowseTrails;
+
