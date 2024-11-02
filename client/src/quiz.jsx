@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import './styles/Quiz.css';
+import axios from 'axios'
 
 const questions = [
   {
@@ -77,7 +78,7 @@ const Quiz = () => {
     setAnswers(newAnswers);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (answers.includes(null)) {
       alert("Please answer all questions before submitting.");
@@ -87,8 +88,28 @@ const Quiz = () => {
     const fitnessLevel = determineFitnessLevel(median);
 
     // Redirect to SuggestedTrails page with fitness level as state
-    navigate('/suggested-trails', { state: { fitnessLevel } });
-  };
+  try {
+    const response = await axios.post('https://9ioacg5nhe-dsn.algolia.net/1/indexes/alltrails_primary_en-US/query', 
+      // Add your request payload here
+      { fitnessLevel },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.TRAIL_API_KEY}`
+        },
+      }
+    );
+    const data = response.data;
+
+    navigate('/suggested-trails', { state: { data } });
+  } catch (error) {
+    console.error("Error fetching trails:", error);
+    alert("There was an error fetching suggested trails. Please try again later.")
+  }
+}
+
+
+
 
   return (
     <div className="quiz-container">

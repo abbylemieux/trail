@@ -54,6 +54,9 @@ const RegisterForm = ({ onRegister }) => {
                         required />
                     <button type="submit">Start Your Journey</button>
                 </form>
+                    Already registered?<br />
+                <Link to="/log-in">Sign in
+                    </Link>
                 
             </div></>
     );
