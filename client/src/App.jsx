@@ -2,9 +2,7 @@
 import Nav from "./Nav";
 import React from "react";
 
-
 // import React, { useState } from 'react';
-
 
 function App() {
 
@@ -12,12 +10,9 @@ function App() {
     <>
       <div>
         <Nav />
-        
       </div>
     </>
-    
   );
-
 }
 
 export default App;

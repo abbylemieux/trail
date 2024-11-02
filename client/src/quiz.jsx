@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
-import './styles/Quiz.css';
-import axios from 'axios'
+import { useNavigate } from "react-router-dom";
+import "./styles/Quiz.css";
+
 
 const questions = [
   {
@@ -57,7 +57,9 @@ const calculateMedian = (values) => {
   const sorted = values.filter((v) => v !== null).sort((a, b) => a - b);
   const mid = Math.floor(sorted.length / 2);
   if (sorted.length === 0) return null;
-  return sorted.length % 2 !== 0 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
+  return sorted.length % 2 !== 0
+    ? sorted[mid]
+    : (sorted[mid - 1] + sorted[mid]) / 2;
 };
 
 const determineFitnessLevel = (median) => {
@@ -70,7 +72,9 @@ const determineFitnessLevel = (median) => {
 
 const Quiz = () => {
   const [answers, setAnswers] = useState(Array(questions.length).fill(null));
-  const navigate = useNavigate(); 
+  const [fitnessLevel, setFitnessLevel] = useState(null);
+  const [quizCompleted, setQuizCompleted] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (index, optionIndex) => {
     const newAnswers = [...answers];
@@ -85,31 +89,14 @@ const Quiz = () => {
       return;
     }
     const median = calculateMedian(answers);
-    const fitnessLevel = determineFitnessLevel(median);
+    const level = determineFitnessLevel(median);
+    setFitnessLevel(level);
+    setQuizCompleted(true);
+  };
 
-    // Redirect to SuggestedTrails page with fitness level as state
-  try {
-    const response = await axios.post('https://9ioacg5nhe-dsn.algolia.net/1/indexes/alltrails_primary_en-US/query', 
-      // Add your request payload here
-      { fitnessLevel },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.TRAIL_API_KEY}`
-        },
-      }
-    );
-    const data = response.data;
-
-    navigate('/suggested-trails', { state: { data } });
-  } catch (error) {
-    console.error("Error fetching trails:", error);
-    alert("There was an error fetching suggested trails. Please try again later.")
-  }
-}
-
-
-
+  const handleRedirect = () => {
+    navigate("/SuggestedTrails", { state: { fitnessLevel } });
+  };
 
   return (
     <div className="quiz-container">
@@ -133,8 +120,20 @@ const Quiz = () => {
             ))}
           </div>
         ))}
-        <button type="submit">Find Your Trail Level</button>
+        {!quizCompleted ? (
+          <button type="submit">Submit Quiz</button>
+        ) : (
+          <button type="button" onClick={handleRedirect}>
+            Find Suggested Trails
+          </button>
+        )}
       </form>
+
+      {quizCompleted && (
+        <div className="result-section">
+          <h2>Your Fitness Level: {fitnessLevel}</h2>
+        </div>
+      )}
     </div>
   );
 };
