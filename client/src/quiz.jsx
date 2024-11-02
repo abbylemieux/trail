@@ -82,7 +82,7 @@ const Quiz = () => {
     setAnswers(newAnswers);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (answers.includes(null)) {
       alert("Please answer all questions before submitting.");

@@ -10,7 +10,10 @@ import Quiz from './quiz.jsx';
 import BrowseTrails from './browseTrails.jsx'
 import SuggestedTrails from './SuggestedTrails.jsx';
 
+
+
 const router = createBrowserRouter([
+  
   {
     path: '/',
     element: <App />,
@@ -25,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'log-in',
-        element: <SignIn />,
+        element: <SignIn  />,
       },
       {
         path: 'quiz',
