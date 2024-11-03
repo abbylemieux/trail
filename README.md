@@ -1,15 +1,19 @@
-# TrailTrekker.io
 
-TrailTrekker.io is a web application designed to help users find and explore hiking trails and get weather information for their outdoor adventures. The application is built with a React frontend and an Express backend, and it integrates with third-party APIs for trail and weather data.
+  # trailtrekker.io
 
-## Table of Contents
+  ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [Screenshot](#screenshot)
-- [License](#license)
-- [Links](#links)
+  ## Description
+  trailtrekker.io is a full stack web application using react, vite, and jsx on the front end and typescript and postgress on the backend. this app was developed to give people a social platform that helps finf hiking trails in your area based on experience levels.
+
+  ## Table of Contents
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Contributors](#contributors)
+  - [Tests](#tests)
+  - [Screenshot](#screenshot)
+  - [License](#license)
+  - [Links](#links)
 
 ## Installation
 
@@ -47,19 +51,23 @@ TrailTrekker.io is a web application designed to help users find and explore hik
     npm start
     ```
 
-## Usage
+  ## Usage
+  the usage is to allow people who have a passion for hiking to  easily find trails in their area that are good for their skill levels and read , or leave, reviews whilst interacting with other users. go to the webpage listed at the bottom and create an account there. after account creation you would then be asked a series of questions in quiz form that will determine a dificulty level for you. after the quiz is completed and difficulty level assigned you willl be ready to browse a wide variety of trails in and around your area, interact with other people, and leave your own reviews and feedback after a trail is completed.
 
-To use the application, navigate to `http://localhost:3000` in your web browser. You can browse trails, take a fitness assessment quiz, and sign up or log in to save your favorite trails.
+  ## Contributors
+  Abby Lemieux, Amar Patel, Colby Lucas, Derek Hurteau, and Keegan Hinton
 
-## Screenshot
+  ## Tests
+  server and database testing on backend, and UX, api, and JWT Authentication on front end.
 
-![Screenshot of TrailTrekker.io](client/src/assets/screenshot.png)
+  ## Screenshot
 
-## License 
+  ![Screenshot of TrailTrekker.io](client/src/assets/screenshot.png)
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+  ## License
+   ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+     This project contains a [MIT](https://opensource.org/licenses/MIT) license.
 
-## Links 
-
-### Repo: https://github.com/abbylemieux/trailTrekker.io.git
-### Render: 
+  ## Links 
+  Repo: https://github.com/abbylemieux/trailTrekker.io.git
+  Render: https://trailtrekker-io-project.onrender.com
